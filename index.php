@@ -39,7 +39,7 @@ p { font-size: 17px; }
 	
 	<div class="block">	
 		<p>
-			OccupySMS expedites mutual aid on the ground by connect people needing and offering aid based on their specific location and needs <br/>in areas without power or Internet.
+			OccupySMS expedites mutual aid on the ground by connecting people needing and offering aid based on their specific location and needs <br/>in areas without power or Internet.
 			<br/><br/>
 			Volunteers offering support (pumping, clean-up, repair, and supplies) will be given the addresses of households seeking those resources.
 		</p>
