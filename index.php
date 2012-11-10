@@ -97,13 +97,13 @@ p { font-size: 17px; }
 		<div class="block">
 			<h4>4. Encourage efficiency by targeting specific needs.</h4>
 			<p>
-				By asking those in need to categorize their needs (pumping, cleaning, medical aid, supplies, food), they can more efficiently be connected to those with these particular resources. Some who needs a pump can find someone who has a pump.
+				By asking those in need to categorize their needs (pumping, cleaning, repairs, supplies), they can more efficiently be connected to those with these particular resources. Someone who needs a pump can find someone who has a pump.
 			</p>
 		</div>
 		
 		<div class="block">
 			<p>
-				Contact <a href="mailto:occupysms@gmail.com">occupysms@gmail.com</a> for more information or if you are an organization that wants to add a large amount of data.
+				Contact <a href="mailto:occupysms@gmail.com">occupysms@gmail.com</a> for more information<br/> or if you are an organization that wants to add a large amount of data.
 			</p>
 		</div>
 		
