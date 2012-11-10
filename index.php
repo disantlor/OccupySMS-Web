@@ -103,7 +103,7 @@ p { font-size: 17px; }
 		
 		<div class="block">
 			<p>
-				Contact <a href="mailto:occupysms@gmail.com">occupysms@gmail.com</a> for more information.
+				Contact <a href="mailto:occupysms@gmail.com">occupysms@gmail.com</a> for more information or if you are an organization that wants to add a large amount of data.
 			</p>
 		</div>
 		
