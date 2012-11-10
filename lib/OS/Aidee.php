@@ -96,8 +96,8 @@ class OS_Aidee extends OS_Model
 	/**
 	 * Create a new Aidee request
 	 * 
-	 * Pushing request to SMS listener on cjcodes, as though the request were being made via SMS.
-	 * This way the validation code, etc, doesn't need to be duplicated and synchronized here.
+	 * For now, this function actually makes a request to the SMS listener script rather than writing to the db directly
+	 * This way the validation code, error handling, etc, doesn't need to be duplicated here.
 	 * 
 	 * @param array of aidee request data
 	 * @return Zend_Http_Response
@@ -108,7 +108,7 @@ class OS_Aidee extends OS_Model
 			return false;
 		}
 		
-		// spoof an SMS request
+		// spoof a Mobile Commons GET request
 		$requestData['api_key'] = SMS_LISTENER_API_KEY;
 		$requestData['keyword'] = $requestData['type'];
 		$requestData['profile_neighborhood'] = $requestData['neighborhood'];
