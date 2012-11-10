@@ -26,12 +26,19 @@ p { font-size: 17px; }
 .occupy { color: #A00; }
 .highlight { color: #00f; font-weight: bold; }
 
+#top-alert { text-align: center; font-size: 16px; background-color: #FFD942; color: #111; border: 1px #f5c400 solid; padding: 14px 25px; font-weight: bold; } 
+
+
 </style>
 
 
 </head>
 
 <body>
+	
+<div id="top-alert" class="alert">
+	We need as many aid requests entered as possible so that people can start texting in to help!  Text SANDY to 69866 to report a need.
+</div>
 	
 <div id="main">
 
