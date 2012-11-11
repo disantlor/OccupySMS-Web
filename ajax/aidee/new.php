@@ -7,35 +7,38 @@ $requestData = $_POST;
  * Do some basic validation 
  */
 // validate phone
-if (! isset($requestData['phone'])) {
-	header('You did not provide a phone number.', true, 400);
-	exit;
+if (! isset($requestData['phone']) || strlen($requestData['phone']) < 10) {
+	errorAndExit('Please provide a valid phone number.');
 }
 
 // validate address
 if (! isset($requestData['address'])) {
-	header('You did not provide a valid address.', true, 400);
-	exit;
+	errorAndExit('You did not provide a valid address.');
 }
 
 // validate neighborhood
 if (! isset($requestData['neighborhood'])) {
-	header('You did not provide a neighborhood.', true, 400);
-	exit;
+	errorAndExit('You did not provide a neighborhood.');
 }
 	
 // validate needs
 if (! isset($requestData['needs']) || ! is_array($requestData['needs']) || ! count($requestData['needs'])) {
-	header('You did not specify any needs.', true, 400);
-	exit;
+	errorAndExit('You did not specify any needs.');
 }
 
 foreach ($requestData['needs'] as $need) {
 	if (! in_array($need, OS_Needs::listValidNeeds())) {
-		header('You supplied an invalid need. Please choose one of the following: ' . implode(', ', OS_Needs::listValidNeeds()), true, 400);
-		exit;
+		errorAndExit('You supplied an invalid need. Please choose one of the following: ' . implode(', ', OS_Needs::listValidNeeds()));
 	}
 } 
+
+function errorAndExit($message = '')
+{
+	// for some reason headers cause server error on 1and1??
+	// header('HTTP 1.0 Bad Request', true, 400);
+	echo $message;
+	exit;
+}
 
 /*
  * Submit AIDEE request 
