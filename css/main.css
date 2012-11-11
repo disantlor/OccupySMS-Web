@@ -63,7 +63,7 @@ table.aidees .column.address { width: 175px; }
 table.aidees .column.contact {}
 table.aidees .column.date-added {}
 table.aidees .column.helping {}
-table.aidees .column.controls {}
+table.aidees .column.controls { text-align: right; }
 
 table.aidees .details { font-size: 11px; font-style: italic; }
 

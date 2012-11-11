@@ -6,3 +6,5 @@ require_once 'Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace('OS_');
 
+define('URL', 'http://' . $_SERVER['HTTP_HOST']);
+define('AP', dirname(__FILE__));

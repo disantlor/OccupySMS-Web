@@ -1,6 +1,7 @@
 <?php 
 include '../bootstrap.php';
 
+// Handle querystring changes
 if (isset($_GET['set_helped'])) {
 	$aideeToUpdate = OS_Aidee::findOne($_GET['set_helped']);	
 	$aideeToUpdate->setHelped();
@@ -18,7 +19,7 @@ $aidees = OS_Aidee::fetch();
 <title>OCCUPYSMS: Mutual Aid Platform: Admin</title>
 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.7.3/build/cssreset/cssreset-min.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="<?php echo URL ?>/css/main.css">
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
@@ -69,7 +70,7 @@ $aidees = OS_Aidee::fetch();
 				<td><?php echo $aidee->get('helping') ?></td>
 				
 				<!-- Controls -->
-				<td>
+				<td class="column controls">
 					<?php if (! $aidee->hasBeenHelped()): ?>
 						<a class="button submit" href="?set_helped=<?php echo $aidee->get('id') ?>">MARK AS HELPED</a>
 					<?php else: ?>
