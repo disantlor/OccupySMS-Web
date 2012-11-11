@@ -1,0 +1,1 @@
+<h1 class="logo main"><span class="occupy">OCCUPY</span>SMS</h1>

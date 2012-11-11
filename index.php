@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <title>OCCUPYSMS: Mutual Aid Platform</title>
 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.7.3/build/cssreset/cssreset-min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 
-<style type="text/css">
-body { background-color: #fafafa; color: #111; font-family: "Helvetica Neue", "Helvetica", sans-serif; line-height: 1.5em }
-
-h1, h2, h3, h4 { line-height: 1.2em; font-weight: bold; }
-h1 { font-size: 60px; letter-spacing: 1px; }
-h2 { font-size: 26px; }
-h4 { font-size: 18px; }
-
-p { font-size: 17px; }
-
-
-#main { width: 600px; margin: 10px auto; text-align: center; }
-#goals { margin-top: 25px; }
-
-.small { font-size: 12px; line-height: 1.2em }
-.block { padding: 15px; }
-.occupy { color: #A00; }
-.highlight { color: #00f; font-weight: bold; }
-
-#top-alert { text-align: center; font-size: 16px; background-color: #FFD942; color: #111; border: 1px #f5c400 solid; padding: 14px 25px; font-weight: bold; } 
-
-
-</style>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 </head>
-
 <body>
 	
 <div id="top-alert" class="alert">
 	We need as many aid requests entered as possible so that people can start texting in to help!  Text SANDY to 69866 to report a need.
 </div>
 	
-<div id="main">
-
-	<h1><span class="occupy">OCCUPY</span>SMS</h1>
+<?php include ('_logo.php'); ?>
+	
+<div id="main" class="home">
 	
 	<div class="block">	
 		<p>
@@ -74,10 +50,13 @@ p { font-size: 17px; }
 	</div>
 	
 	<div class="block">
-		<?php include ('map.php'); ?>
+		<?php include ('_map.php'); ?>
 	</div>
 	
-	<div id="goals" class="block">
+	<br/>
+	
+	<div class="block">
+	
 		<h2>OUR GOALS</h2>
 	
 		<div class="block">
@@ -108,12 +87,16 @@ p { font-size: 17px; }
 			</p>
 		</div>
 		
-		<div class="block">
-			<p>
-				Contact <a href="mailto:occupysms@gmail.com">occupysms@gmail.com</a> for more information<br/> or if you are an organization that wants to add a large amount of data.
-			</p>
-		</div>
-		
+	</div>
+	
+	<div class="block">
+		<h2><a target="_blank" href="https://docs.google.com/document/d/1cGiQN9MRlYEXdjDHs1F60yuqCj9OpC4Y2xAawEQmb2w/edit">FAQ</a></h2>
+	</div>
+	
+	<div class="block">
+		<p>
+			Contact <a href="mailto:occupysms@gmail.com">occupysms@gmail.com</a> for more information<br/> or if you are an organization that wants to add a large amount of data.
+		</p>
 	</div>
 	
 </div> <!-- #main -->

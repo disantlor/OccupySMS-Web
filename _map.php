@@ -16,9 +16,9 @@ foreach ($aidees as $aidee) {
 
 ?>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyDqAE2IgpslZZUsn6YvRGlnEIzLikEpzE4&sensor=true" type="text/javascript"></script>
 <script type="text/javascript" src="js/gmaps.js"></script>
+
 <script>
 $(function(){
 	// setup map using gmaps

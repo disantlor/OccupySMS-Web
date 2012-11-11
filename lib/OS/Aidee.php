@@ -1,11 +1,17 @@
 <?php
 class OS_Aidee extends OS_Model
 {
+	private $_table = 'requests';
 	private $_db;
 	
 	public function __construct($data = array())
 	{
 		$this->setDataArray($data);
+	}
+	
+	public function hasBeenHelped()
+	{
+		return (bool)$this->get('helping');
 	}
 	
 	/**
@@ -32,7 +38,7 @@ class OS_Aidee extends OS_Model
 		
 		// cache $geolocation by saving to DB
 		$this->_getDbConnection()->update(
-			'requests',  
+			$this->_table,  
 			array(
 				'lat' => $geolocation['lat'],
 				'lng' => $geolocation['lng']
@@ -54,7 +60,43 @@ class OS_Aidee extends OS_Model
 		return isset($neighborhoods[$this->get('neighborhood')]) ? $neighborhoods[$this->get('neighborhood')] : '';
 	}
 	
+	public function setHelped($volunteerInfo = 'N/A')
+	{
+		return $this->_getDbConnection()->update(
+			$this->_table,
+			array(
+				'helped' => date('Y-m-d H:i:s'),
+				'helping' => $volunteerInfo 
+			),
+			'id = ' . $this->get('id')
+		);
+	}
+	
+	public function setNotHelped()
+	{
+		return $this->_getDbConnection()->update(
+			$this->_table,
+			array(
+				'helped' => new Zend_Db_Expr('NULL'),
+				'helping' => new Zend_Db_Expr('NULL') 
+			),
+			'id = ' . $this->get('id')
+		);
+	}
+	
 	/* STATIC SERVICE FUNCTIONS */
+	public static function findOne($id)
+	{
+		$aidee = new OS_Aidee();
+		$result = $aidee->_getDbConnection()->fetchRow('SELECT * FROM requests WHERE ' . $aidee->_getDbConnection()->quoteInto('id = ?', intval($id)));
+		
+		if (! $result) {
+			return false;
+		}
+		
+		return new OS_Aidee($result);
+	}
+	
 	/**
 	 * fetch all Aidee requests
 	 * @return array of OS_Aidee objects 
@@ -64,8 +106,7 @@ class OS_Aidee extends OS_Model
 		$aidee = new OS_Aidee();
 		$output = array();
 		
-		// debug query
-		$requests = $aidee->_getDbConnection()->query('SELECT * FROM requests');
+		$requests = $aidee->_getDbConnection()->query('SELECT * FROM requests ORDER BY helping ASC, neighborhood ASC, timestamp ASC');
 
 		foreach ($requests as $request) {
 			$output[] = new OS_Aidee($request);
@@ -83,7 +124,6 @@ class OS_Aidee extends OS_Model
 		$aidee = new OS_Aidee();
 		$output = array();
 		
-		// debug query
 		$requests = $aidee->_getDbConnection()->query('SELECT * FROM requests WHERE helped IS NULL');
 
 		foreach ($requests as $request) {
