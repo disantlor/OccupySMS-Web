@@ -85,7 +85,6 @@ $aidees = OS_Aidee::fetch();
 				<!-- Volunteer Info -->
 				<td><input type="text" class="text" name="helping" style="width: 95px;" value="<?php echo $aidee->get('helping') ?>"/></td>
 				
-				
 				<td class="controls">
 					<input type="submit" class="button submit" value="SAVE"/>
 					<input type="hidden" name="aidee_id" value="<?php echo $aidee->get('id') ?>"/>

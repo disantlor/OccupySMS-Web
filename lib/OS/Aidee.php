@@ -13,9 +13,9 @@ class OS_Aidee extends OS_Model
 	 * Fetch geolocation from data.  If not available, perform geolocate and store data in db
 	 * @return mixed array or bool
 	 */
-	public function getGeolocation()
+	public function getGeolocation($refresh = false)
 	{
-		if ($this->get('lat') && $this->get('lng')) {
+		if (! $refresh && $this->get('lat') && $this->get('lng')) {
 			return array(
 				'lat' => $this->get('lat'),
 				'lng' => $this->get('lng')
@@ -38,7 +38,7 @@ class OS_Aidee extends OS_Model
 				'lat' => $geolocation['lat'],
 				'lng' => $geolocation['lng']
 			),
-			'id = ' . $this->get('id')
+			array('id = ?' . $this->get('id'))
 		);	
 		
 		return $geolocation;
@@ -72,6 +72,14 @@ class OS_Aidee extends OS_Model
 		$this->set('helping', new Zend_Db_Expr('NULL'));
 	}
 	
+	/**
+	 * Perform update only on fields which are user-updateable
+	 * Note: currently if any update happens it wipes lat/lng
+	 * 
+	 * TODO: Only wipe lat/lng if address has changed, or better yet, recalculate geolocation on the spot
+	 * 
+	 * @return bool
+	 */
 	public function save()
 	{
 		$db = $this->_getDbConnection();
@@ -81,7 +89,9 @@ class OS_Aidee extends OS_Model
 				'address' => $this->get('address'),
 				'phone' => $this->get('phone'),
 				'helping' => $this->get('helping'),
-				'helped' => $this->get('helped')
+				'helped' => $this->get('helped'),
+				'lat' => NULL, // clear geolocation cache
+				'lng' => NULL
 			),
 			array('id = ?' => $this->get('id'))
 		);

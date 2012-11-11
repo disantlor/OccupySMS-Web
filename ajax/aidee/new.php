@@ -22,7 +22,7 @@ if (! isset($requestData['neighborhood'])) {
 }
 	
 // validate needs
-if (! isset($requestData['needs']) || ! is_array($requestData['needs']) || ! count($requestData['needs'])) {
+if (! isset($requestData['needs']) || ! count($requestData['needs'])) {
 	errorAndExit('You did not specify any needs.');
 }
 
@@ -56,13 +56,13 @@ foreach ($requestData['needs'] as $need) {
 			'address' => $requestData['address'],
 			'neighborhood' => $requestData['neighborhood'],
 			'type' => $need,
-			'args' => isset($requestData['details']) ? $requestData['details'] : NULL
+			'args' => ($need === OS_Needs::SUPPLIES && isset($requestData['details'])) ? $requestData['details'] : NULL
 		));
 		
 		$resultMessage .= $response->getBody();
 		
 	} catch (Exception $e) {
-	
+
 		$resultMessage .= 'Sorry, something went wrong and your request was NOT recorded. Try submitting again';
 	
 	}

@@ -1,5 +1,6 @@
 <?php
 require_once 'bootstrap.php';
+
 $aidees = OS_Aidee::fetchOutstanding();
 
 // loop through aidees and prepare data for transfer to JS
@@ -69,4 +70,4 @@ $(function(){
 </script>
 
 <div id="map" style="width:570px; height: 350px; margin: 5px 0;"></div>
-<div class="small">C = clean-up; P = pumping; R = repair; S = supplies. Use this map to find an area of need.<br/>Text in to receive a specific address assignment once you are on the ground.</div>
+<div class="small">C = clean-up; P = pumping; R = repair; S = supplies. Use this map to find an area of need.<br/>Map pins are approximations, text in to receive a specific address assignment once you are on the ground.</div>
