@@ -9,11 +9,6 @@ class OS_Aidee extends OS_Model
 		$this->setDataArray($data);
 	}
 	
-	public function hasBeenHelped()
-	{
-		return (bool)$this->get('helping');
-	}
-	
 	/**
 	 * Fetch geolocation from data.  If not available, perform geolocate and store data in db
 	 * @return mixed array or bool
@@ -60,27 +55,35 @@ class OS_Aidee extends OS_Model
 		return isset($neighborhoods[$this->get('neighborhood')]) ? $neighborhoods[$this->get('neighborhood')] : '';
 	}
 	
-	public function setHelped($volunteerInfo = 'N/A')
+	public function hasBeenHelped()
 	{
-		return $this->_getDbConnection()->update(
-			$this->_table,
-			array(
-				'helped' => date('Y-m-d H:i:s'),
-				'helping' => $volunteerInfo 
-			),
-			'id = ' . $this->get('id')
-		);
+		return (bool)$this->get('helped');
+	}
+	
+	public function setHelped($volunteerInfo = '')
+	{
+		$this->set('helped', date('Y-m-d H:i:s'));
+		$this->set('helping', $volunteerInfo);
 	}
 	
 	public function setNotHelped()
 	{
-		return $this->_getDbConnection()->update(
+		$this->set('helped', new Zend_Db_Expr('NULL'));
+		$this->set('helping', new Zend_Db_Expr('NULL'));
+	}
+	
+	public function save()
+	{
+		$db = $this->_getDbConnection();
+		return $db->update(
 			$this->_table,
 			array(
-				'helped' => new Zend_Db_Expr('NULL'),
-				'helping' => new Zend_Db_Expr('NULL') 
+				'address' => $this->get('address'),
+				'phone' => $this->get('phone'),
+				'helping' => $this->get('helping'),
+				'helped' => $this->get('helped')
 			),
-			'id = ' . $this->get('id')
+			array('id = ?' => $this->get('id'))
 		);
 	}
 	

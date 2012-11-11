@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+html, body { height: 100%; }
 body { background-color: #fafafa; color: #111; font-family: "Helvetica Neue", "Helvetica", sans-serif; }
 
 h1, h2, h3, h4 { line-height: 1.2em; font-weight: bold; }
@@ -58,12 +59,12 @@ table.aidees .button { font-size: 12px; font-weight: normal; padding: 5px 10px; 
 
 table.aidees .column {}
 table.aidees .column.neighborhood {}
-table.aidees .column.need {}
+table.aidees .column.need { width: 115px; }
 table.aidees .column.address { width: 175px; }
 table.aidees .column.contact {}
 table.aidees .column.date-added {}
 table.aidees .column.helping {}
-table.aidees .column.controls { text-align: right; }
+table.aidees .column.helped { text-align: center; }
 
-table.aidees .details { font-size: 11px; font-style: italic; }
+table.aidees .details { font-size: 11px; line-height: 1.2em; }
 
