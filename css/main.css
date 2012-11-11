@@ -51,7 +51,7 @@ table.aidees th, table.aidees td { padding: 12px 8px; }
 table.aidees th { font-weight: bold; }
 
 table.aidees tr.staten .neighborhood { color: #ff0505 }
-table.aidees tr.rockaway .neighborhood { color: #0b05fa }
+table.aidees tr.rockaway .neighborhood { color: #0598ff }
 table.aidees tr.coney .neighborhood { color: #ff9e05 }
 
 table.aidees .button { font-size: 12px; font-weight: normal; padding: 5px 10px; }
