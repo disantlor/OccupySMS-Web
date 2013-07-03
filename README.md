@@ -1,1 +1,1 @@
-NOTE: This project requires Zend Framework 1.12 Standalone in lib/ to work
+NOTE: This project requires Zend Framework 1.12 Standalone in lib/
